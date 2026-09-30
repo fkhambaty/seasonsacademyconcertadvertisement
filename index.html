@@ -31,7 +31,7 @@
     /* header */
     .top{position:sticky;top:0;z-index:20;height:calc(var(--head) + env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;padding:env(safe-area-inset-top) clamp(18px,4vw,44px) 0;background:#f7f5f0e8;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
     .brand{display:flex;align-items:center;gap:12px}
-    .brand-mark{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--gold),var(--gold-lt));font:600 20px/1 var(--serif);box-shadow:0 6px 16px #b8892f3d;flex:none}
+    .brand-mark{width:40px;height:40px;display:block;object-fit:contain;flex:none}
     .brand-copy b{display:block;font:600 17px/1.15 var(--serif);letter-spacing:-.01em}
     .brand-copy span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
     .top-cta{display:flex;align-items:center}
@@ -275,6 +275,8 @@
     footer{border-top:1px solid var(--line);padding:32px 0 calc(32px + env(safe-area-inset-bottom));color:var(--muted);font-size:13.5px;background:#fff}
     footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
     footer b{color:var(--ink)}
+    .foot-brand{display:flex;align-items:center;gap:14px;line-height:1.5}
+    .foot-brand img{width:52px;height:72px;display:block;object-fit:contain;flex:none}
 
     .callbar{display:none}
 
@@ -293,6 +295,8 @@
       :root{--head:60px}
       .brand-copy span{display:none}
       .brand-copy b{font-size:16px}
+      .brand-mark{width:36px;height:36px}
+      .brand{gap:10px}
       .top-cta .btn{width:44px;height:44px;padding:0;justify-content:center}
       .top-cta .btn svg{width:18px;height:18px}
       .top-cta .label{display:none}
@@ -351,7 +355,7 @@
 
   <header class="top">
     <a class="brand" href="#top">
-      <span class="brand-mark">S</span>
+      <img class="brand-mark" src="assets/logo-mark.png" width="40" height="40" alt="Seasons Music Academy">
       <span class="brand-copy"><b>Seasons Academy</b><span>Screen partnership · Concert 2026</span></span>
     </a>
     <div class="top-cta">
@@ -686,7 +690,7 @@
 
   <footer>
     <div class="wrap">
-      <div><b>Seasons Music Academy</b> · Musicale 2026 · Partnerships</div>
+      <div class="foot-brand"><img src="assets/logo.png" width="52" height="72" alt="Seasons Music Academy" loading="lazy"><div><b>Seasons Music Academy</b><br>Musicale 2026 · Partnerships</div></div>
       <div>Joseph Sunil Kumar · <a href="tel:+918530015665"><b>+91 85300 15665</b></a> · <a href="mailto:seasonsmusic4ever@gmail.com">seasonsmusic4ever@gmail.com</a></div>
     </div>
   </footer>
