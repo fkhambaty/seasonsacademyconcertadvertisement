@@ -185,6 +185,48 @@
     .moment h3 i{color:var(--gold);font-style:italic}
     .moment p{margin:0;color:var(--muted);font-size:15px}
 
+    /* last time: photos + videos */
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(92px,10.5vw,150px);gap:14px}
+    .shot{margin:0;position:relative;grid-column:var(--c);grid-row:var(--r);border-radius:20px;overflow:hidden;background:#1b1826;box-shadow:var(--shadow);isolation:isolate}
+    .shot img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.02);transition:transform 1.2s var(--ease)}
+    .shot:hover img{transform:scale(1.07)}
+    .shot:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#0d0b14b3);pointer-events:none}
+    .shot figcaption{position:absolute;left:18px;right:18px;bottom:16px;color:#fff;font:italic 400 clamp(13px,1.3vw,16px)/1.3 var(--serif);text-shadow:0 1px 12px #0009;z-index:1}
+    .videos{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+    .video{position:relative;display:block;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#0d0b14;box-shadow:var(--shadow);isolation:isolate;transition:transform .35s var(--ease),box-shadow .35s}
+    .video:hover{transform:translateY(-4px);box-shadow:0 30px 70px -24px #6c5ce766}
+    .video img,.video iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;display:block}
+    .video:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0d0b1422,#0d0b14aa);pointer-events:none;transition:opacity .35s}
+    .video.playing:after,.video.playing .play,.video.playing .vlabel{display:none}
+    .play{position:absolute;left:50%;top:50%;width:clamp(56px,6vw,76px);height:clamp(56px,6vw,76px);transform:translate(-50%,-50%);border-radius:50%;display:grid;place-items:center;background:#ffffffe6;color:var(--ink);box-shadow:0 14px 40px #0006;z-index:2;transition:transform .35s var(--ease),background .35s}
+    .play svg{width:42%;height:42%;margin-left:6%}
+    .video:hover .play{transform:translate(-50%,-50%) scale(1.08);background:var(--gold-lt)}
+    .vlabel{position:absolute;left:22px;bottom:20px;z-index:2;color:#fff;display:grid;gap:4px}
+    .vlabel small{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:#ffffffb8}
+    .vlabel b{font:600 clamp(18px,2vw,24px)/1.15 var(--serif)}
+
+    /* tiers */
+    .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch}
+    .tier{position:relative;display:flex;flex-direction:column;gap:18px;padding:28px 26px;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:var(--shadow);transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+    .tier:hover{transform:translateY(-6px);border-color:#b8892f66}
+    .tier.featured{border-color:#b8892f;background:linear-gradient(180deg,#fffaf0,#fff 45%);box-shadow:0 30px 70px -24px #b8892f66}
+    .ribbon{position:absolute;top:-13px;left:26px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#fff;background:linear-gradient(120deg,var(--gold),var(--gold-lt));padding:6px 12px;border-radius:999px;box-shadow:0 8px 20px #b8892f55}
+    .tier-head strong{display:block;margin-top:10px;font:600 clamp(26px,2.4vw,34px)/1 var(--serif);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+    .tier-head strong span{color:var(--gold);font-weight:400}
+    .led{position:relative;border-radius:12px;padding:14px 16px;color:#fff;overflow:hidden;background:linear-gradient(90deg,#f0509b,#8c7ff2 50%,#56d9dd);box-shadow:0 0 0 3px #0b0a12,0 14px 30px -12px #8c7ff299}
+    .led:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#0000 0 32%,#00000066 38%) 0 0/3px 3px;opacity:.7}
+    .led:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 130%,#00000088,transparent 60%)}
+    .led small,.led b{position:relative;display:block;text-shadow:0 0 18px #fff9}
+    .led small{font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;opacity:.9}
+    .led b{margin-top:4px;font:600 20px/1 var(--serif)}
+    .tier ul{list-style:none;margin:0;padding:0;display:grid;gap:11px;flex:1}
+    .tier li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--muted);line-height:1.45}
+    .tier li b{color:var(--ink)}
+    .tier li i{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-style:normal;color:#fff;background:var(--gold);margin-top:1px}
+    .tier .btn{justify-content:center;margin-top:4px}
+    .tier-note{margin:28px auto 0;max-width:62ch;text-align:center;color:var(--muted);font-size:15px}
+    .tier-note a{color:var(--gold);font-weight:700;border-bottom:1px solid #b8892f66}
+
     /* audience */
     .aud{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .aud-card{border:1px solid var(--line);border-radius:22px;padding:28px;background:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow)}
@@ -225,7 +267,10 @@
     .who{display:block;color:var(--muted);font-size:14px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:34px}
     .cta-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
     .cta .btn{padding:16px 26px;font-size:15px}
-    .fine{margin-top:34px;color:#8a8594;font-size:13px}
+    .alt-contact{display:flex;justify-content:center;gap:10px 28px;flex-wrap:wrap;margin-top:30px;font-size:14px;font-weight:500}
+    .alt-contact a{color:var(--muted);border-bottom:1px solid var(--line2);transition:color .25s,border-color .25s}
+    .alt-contact a:hover{color:var(--gold);border-color:var(--gold)}
+    .fine{margin-top:26px;color:#8a8594;font-size:13px}
 
     footer{border-top:1px solid var(--line);padding:32px 0 calc(32px + env(safe-area-inset-bottom));color:var(--muted);font-size:13.5px;background:#fff}
     footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
@@ -238,6 +283,10 @@
       .split,.try-grid{grid-template-columns:1fr}
       .moments,.aud{grid-template-columns:1fr}
       .insights{grid-template-columns:1fr}
+      .tiers{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:auto;gap:12px}
+      .shot{grid-column:auto;grid-row:auto;aspect-ratio:4/3}
+      .shot:first-child{grid-column:1/-1;aspect-ratio:16/9}
       .sec-head{grid-template-columns:1fr;gap:6px}
     }
     @media(max-width:640px){
@@ -264,6 +313,11 @@
       .sec-no{font-size:32px}
       .stats{grid-template-columns:1fr}
       .stat{padding:24px}
+      .tiers{grid-template-columns:1fr}
+      .tier{padding:26px 22px}
+      .tier.featured{order:-1}
+      .videos{grid-template-columns:1fr;gap:12px}
+      .shot figcaption{font-size:12.5px;left:14px;right:14px;bottom:12px}
       .hero{padding:52px 0 48px}
       .hero h1{max-width:none}
       .hero-actions{flex-direction:column;align-items:stretch;width:min(100%,340px);margin-left:auto;margin-right:auto}
@@ -368,7 +422,7 @@
         </div>
         <div class="stats">
           <div class="stat reveal" style="--c:#d9ad4f"><strong><span data-count="23">0</span></strong><b>Performances</b><p>Twenty-three curated acts, back to back. The wall is the backdrop for every one of them.</p></div>
-          <div class="stat reveal" data-d="1" style="--c:#f0509b"><strong><span data-count="100">0</span><sup>s</sup></strong><b>Guests from across Pune</b><p>Families, friends, students and music lovers travelling in from every corner of the city.</p></div>
+          <div class="stat reveal" data-d="1" style="--c:#f0509b"><strong><span data-count="500">0</span><sup>+</sup></strong><b>Guests expected from across Pune</b><p>Families, friends, students and music lovers travelling in from every corner of the city.</p></div>
           <div class="stat reveal" data-d="2" style="--c:#8c7ff2"><strong><span data-count="3">0</span><sup>hrs+</sup></strong><b>Of live show</b><p>An afternoon that runs into evening — and your brand stays lit for the whole arc of it.</p></div>
           <div class="stat reveal" data-d="3" style="--c:#56d9dd"><strong><span data-count="10">0</span></strong><b>Musical disciplines</b><p>Drums to violins, flutes to vocals, guitars to dance. Something in it for every taste in the room.</p></div>
           <div class="stat reveal" data-d="4" style="--c:#d9ad4f"><strong><span data-count="150">0</span><sup>+</sup></strong><b>Performer appearances</b><p>Each one with a proud family in the audience — cameras up, recording, sharing.</p></div>
@@ -460,11 +514,42 @@
 
     <div class="hair"></div>
 
-    <!-- 04 THE CROWD -->
-    <section id="crowd">
+    <!-- 04 LAST TIME -->
+    <section id="proof">
       <div class="wrap">
         <div class="sec-head reveal">
           <div class="sec-no">04</div>
+          <div><div class="eyebrow">Last time</div><h2>This isn't a promise. <i>It's a track record.</i></h2><p>Seasons Academy has filled this stage before. Here is what the room, the stage and the screen looked like the last time the lights went down.</p></div>
+        </div>
+        <div class="gallery">
+          <figure class="shot reveal" style="--c:1/9;--r:span 2"><img src="assets/audience.jpg" width="1400" height="933" alt="A full auditorium of guests seated and watching the Seasons Academy concert" loading="lazy"><figcaption>A full house, every seat facing the stage</figcaption></figure>
+          <figure class="shot reveal" data-d="1" style="--c:9/13;--r:span 2"><img src="assets/band.jpg" width="1400" height="1050" alt="Live band performing in front of the LED wall showing the Seasons Academy logo" loading="lazy"><figcaption>The LED wall behind every act</figcaption></figure>
+          <figure class="shot reveal" style="--c:1/5;--r:span 2"><img src="assets/guitars.jpg" width="1400" height="933" alt="Guitar ensemble of students performing on stage" loading="lazy"><figcaption>Student ensembles, professionally staged</figcaption></figure>
+          <figure class="shot reveal" data-d="1" style="--c:5/9;--r:span 2"><img src="assets/cast.jpg" width="1400" height="1050" alt="The full cast of performers gathered on stage under the lights" loading="lazy"><figcaption>The whole cast, one stage</figcaption></figure>
+          <figure class="shot reveal" data-d="2" style="--c:9/13;--r:span 2"><img src="assets/felicitation.jpg" width="1400" height="933" alt="Guests being felicitated on stage in front of the LED wall" loading="lazy"><figcaption>Felicitations — in front of the wall, of course</figcaption></figure>
+        </div>
+        <div class="videos">
+          <a class="video reveal" href="https://youtu.be/NLO486PtGlM" data-yt="NLO486PtGlM" target="_blank" rel="noopener">
+            <img src="https://i.ytimg.com/vi/NLO486PtGlM/maxresdefault.jpg" alt="" loading="lazy">
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="vlabel"><small>Watch</small><b>Annual Music Concert</b></span>
+          </a>
+          <a class="video reveal" data-d="1" href="https://youtu.be/D_w_Yj-ryCU" data-yt="D_w_Yj-ryCU" target="_blank" rel="noopener">
+            <img src="https://i.ytimg.com/vi/D_w_Yj-ryCU/hqdefault.jpg" alt="" loading="lazy">
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="vlabel"><small>Watch</small><b>Quarterly Open Mic</b></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="hair"></div>
+
+    <!-- 05 THE CROWD -->
+    <section id="crowd">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="sec-no">05</div>
           <div><div class="eyebrow">The crowd</div><h2>Who is sitting in <i>those</i> seats.</h2><p>This isn't a passing audience. These are people who booked an afternoon, dressed up, and drove across Pune to be here.</p></div>
         </div>
         <div class="aud">
@@ -483,7 +568,66 @@
 
     <div class="hair"></div>
 
-    <!-- 05 TRY IT -->
+    <!-- 06 PARTNER TIERS -->
+    <section id="tiers">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="sec-no">06</div>
+          <div><div class="eyebrow">Ways to partner</div><h2>Pick how <i>big</i> you want to be.</h2><p>Four ways in — from a full-screen takeover of the wall to a shared spot alongside other friends of the academy. Every tier gets you on the LED wall, on our social media, and on the MC's lips.</p></div>
+        </div>
+        <div class="tiers">
+          <article class="tier featured reveal">
+            <span class="ribbon">Most visible</span>
+            <div class="tier-head"><div class="eyebrow">Title sponsor</div><strong>₹30,000<span>–</span>50,000</strong></div>
+            <div class="led"><small>On the LED wall</small><b>Full screen</b></div>
+            <ul>
+              <li><i>✓</i><span>Naming rights — <b>"Presented by"</b> your brand</span></li>
+              <li><i>✓</i><span>Stall or booth in the venue foyer</span></li>
+              <li><i>✓</i><span><b>8</b> dedicated social media posts &amp; tags</span></li>
+              <li><i>✓</i><span><b>8</b> stage mentions by the MC</span></li>
+              <li><i>✓</i><span><b>4</b> VIP passes</span></li>
+            </ul>
+            <a class="btn gold" href="tel:+918530015665">Claim the title</a>
+          </article>
+          <article class="tier reveal" data-d="1">
+            <div class="tier-head"><div class="eyebrow">Gold partner</div><strong>₹20,000</strong></div>
+            <div class="led"><small>On the LED wall</small><b>Half screen</b></div>
+            <ul>
+              <li><i>✓</i><span>Stall or booth in the venue foyer</span></li>
+              <li><i>✓</i><span><b>6</b> dedicated social media posts &amp; tags</span></li>
+              <li><i>✓</i><span><b>6</b> stage mentions by the MC</span></li>
+              <li><i>✓</i><span><b>3</b> VIP passes</span></li>
+            </ul>
+            <a class="btn ghost" href="tel:+918530015665">Go gold</a>
+          </article>
+          <article class="tier reveal" data-d="2">
+            <div class="tier-head"><div class="eyebrow">Silver partner</div><strong>₹10,000</strong></div>
+            <div class="led"><small>On the LED wall</small><b>Shared screen</b></div>
+            <ul>
+              <li><i>✓</i><span><b>4</b> dedicated social media posts &amp; tags</span></li>
+              <li><i>✓</i><span><b>4</b> stage mentions by the MC</span></li>
+              <li><i>✓</i><span><b>2</b> VIP passes</span></li>
+            </ul>
+            <a class="btn ghost" href="tel:+918530015665">Go silver</a>
+          </article>
+          <article class="tier reveal" data-d="3">
+            <div class="tier-head"><div class="eyebrow">In-kind partner</div><strong>₹5,000</strong></div>
+            <div class="led"><small>On the LED wall</small><b>Shared screen</b></div>
+            <ul>
+              <li><i>✓</i><span><b>2</b> dedicated social media posts &amp; tags</span></li>
+              <li><i>✓</i><span><b>2</b> stage mentions by the MC</span></li>
+              <li><i>✓</i><span><b>1</b> VIP pass</span></li>
+            </ul>
+            <a class="btn ghost" href="tel:+918530015665">Join in</a>
+          </article>
+        </div>
+        <p class="tier-note reveal">Want to sample your product in the foyer, hand something to every guest, or do something we haven't thought of? Custom and in-kind arrangements are welcome — <a href="tel:+918530015665">talk to Joseph</a>.</p>
+      </div>
+    </section>
+
+    <div class="hair"></div>
+
+    <!-- 07 TRY IT -->
     <section id="try">
       <div class="wrap">
         <div class="try reveal">
@@ -516,7 +660,7 @@
 
     <div class="hair"></div>
 
-    <!-- 06 LET'S TALK -->
+    <!-- 08 LET'S TALK -->
     <section class="cta" id="contact">
       <div class="wrap">
         <div class="eyebrow reveal">Let's talk</div>
@@ -530,15 +674,20 @@
           <a class="btn gold" href="tel:+918530015665">Call now</a>
           <a class="btn wa" href="https://wa.me/918530015665?text=Hi%20Joseph%2C%20I%27d%20like%20to%20know%20more%20about%20putting%20my%20brand%20on%20the%20LED%20wall%20at%20the%20Seasons%20Academy%20concert." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c.6.3 1.1.4 1.5.5a3.6 3.6 0 0 0 1.7.1 2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3z"/></svg>WhatsApp Joseph</a>
         </div>
-        <p class="fine reveal" data-d="5">Vitthal Tupe Patil Auditorium, Pune · 9 October 2026 · Streamed later at Seasons Academy</p>
+        <div class="alt-contact reveal" data-d="5">
+          <a href="mailto:seasonsmusic4ever@gmail.com">seasonsmusic4ever@gmail.com</a>
+          <a href="https://www.instagram.com/seasons_academy" target="_blank" rel="noopener">@seasons_academy</a>
+          <a href="https://seasonsacademy.com/" target="_blank" rel="noopener">seasonsacademy.com</a>
+        </div>
+        <p class="fine reveal" data-d="5">Vitthal Tupe Patil Auditorium, Hadapsar, Pune · 9 October 2026 · Streamed later at Seasons Academy</p>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <div><b>Seasons Academy</b> · Concert 2026 · Screen partnerships</div>
-      <div>Joseph · <a href="tel:+918530015665"><b>+91 85300 15665</b></a></div>
+      <div><b>Seasons Music Academy</b> · Musicale 2026 · Partnerships</div>
+      <div>Joseph Sunil Kumar · <a href="tel:+918530015665"><b>+91 85300 15665</b></a> · <a href="mailto:seasonsmusic4ever@gmail.com">seasonsmusic4ever@gmail.com</a></div>
     </div>
   </footer>
 
@@ -681,6 +830,21 @@
       setWall(tryText, tryKicker, trySub, msg);
       setWall(heroText, heroKicker, heroSub, brandName ? msg : loop[0]);
     }
+    /* ---------- videos: play in place, fall back to YouTube if blocked ---------- */
+    document.querySelectorAll(".video[data-yt]").forEach(card => {
+      card.addEventListener("click", e => {
+        if(card.classList.contains("playing")) return;
+        e.preventDefault();
+        const frame = document.createElement("iframe");
+        frame.src = `https://www.youtube-nocookie.com/embed/${card.dataset.yt}?autoplay=1&rel=0`;
+        frame.title = card.querySelector(".vlabel b").textContent;
+        frame.allow = "autoplay; encrypted-media; picture-in-picture";
+        frame.allowFullscreen = true;
+        card.appendChild(frame);
+        card.classList.add("playing");
+      });
+    });
+
     /* On a phone the call bar stays out of the way until the wall has been seen, and steps aside again once the closing number is on screen. */
     const callbar = document.querySelector(".callbar");
     const heroEl = document.getElementById("opener");
