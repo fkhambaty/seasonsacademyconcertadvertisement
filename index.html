@@ -205,27 +205,51 @@
     .vlabel small{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:#ffffffb8}
     .vlabel b{font:600 clamp(18px,2vw,24px)/1.15 var(--serif)}
 
-    /* tiers */
-    .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch}
-    .tier{position:relative;display:flex;flex-direction:column;gap:18px;padding:28px 26px;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:var(--shadow);transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+    /* tiers: comparison grid */
+    .cmp{display:grid;grid-template-columns:minmax(150px,.85fr) repeat(4,1fr);grid-template-rows:repeat(8,auto);gap:0 14px;align-items:stretch}
+    .cmp-labels{display:grid;grid-row:1/9;grid-template-rows:subgrid;color:var(--muted);font-size:13.5px;font-weight:700}
+    .cmp-labels>div{display:flex;align-items:center;padding:16px 4px;border-top:1px solid var(--line)}
+    .cmp-labels>div:first-child,.cmp-labels>div:last-child{border-top:0}
+    .cmp-labels .l-led{color:var(--ink);font-size:14.5px}
+    .tier{position:relative;grid-row:1/9;display:grid;grid-template-rows:subgrid;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:var(--shadow);transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
     .tier:hover{transform:translateY(-6px);border-color:#b8892f66}
     .tier.featured{border-color:#b8892f;background:linear-gradient(180deg,#fffaf0,#fff 45%);box-shadow:0 30px 70px -24px #b8892f66}
-    .ribbon{position:absolute;top:-13px;left:26px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#fff;background:linear-gradient(120deg,var(--gold),var(--gold-lt));padding:6px 12px;border-radius:999px;box-shadow:0 8px 20px #b8892f55}
-    .tier-head strong{display:block;margin-top:10px;font:600 clamp(24px,2vw,30px)/1 var(--serif);letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
-    .tier-head strong span{color:var(--gold);font-weight:400}
-    .led{position:relative;border-radius:12px;padding:14px 16px;color:#fff;overflow:hidden;background:linear-gradient(90deg,#f0509b,#8c7ff2 50%,#56d9dd);box-shadow:0 0 0 3px #0b0a12,0 14px 30px -12px #8c7ff299}
-    .led:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#0000 0 32%,#00000066 38%) 0 0/3px 3px;opacity:.7}
-    .led:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 130%,#00000088,transparent 60%)}
-    .led small,.led b{position:relative;display:block;text-shadow:0 0 18px #fff9}
-    .led small{font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;opacity:.9}
-    .led b{margin-top:4px;font:600 20px/1 var(--serif)}
-    .tier ul{list-style:none;margin:0;padding:0;display:grid;gap:11px;align-content:start;flex:1}
-    .tier li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--muted);line-height:1.45}
-    .tier li b{color:var(--ink)}
-    .tier li i{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-style:normal;color:#fff;background:var(--gold);margin-top:1px}
-    .tier .btn{justify-content:center;margin-top:4px}
+    .tier>*{padding:16px 20px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center}
+    .tier>:first-child{border-top:0}
+    .tier.featured>*{border-top-color:#b8892f33}
+    .ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#fff;background:linear-gradient(120deg,var(--gold),var(--gold-lt));padding:6px 12px;border-radius:999px;box-shadow:0 8px 20px #b8892f55;white-space:nowrap}
+    .c-head{flex-direction:column;gap:8px;padding:26px 20px 20px}
+    .c-head strong{display:block;font:600 clamp(24px,2vw,30px)/1 var(--serif);letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .c-head strong span{color:var(--gold);font-weight:400}
+    .c-led{flex-direction:column;gap:12px;padding:18px 20px}
+    .miniwall{position:relative;width:100%;aspect-ratio:16/7;border-radius:6px;overflow:hidden;background:#181428;box-shadow:0 0 0 3px #0b0a12,0 12px 26px -10px #8c7ff299;display:grid}
+    .miniwall .lit{position:relative;background:linear-gradient(90deg,#f0509b,#8c7ff2 50%,#56d9dd);display:grid;place-items:center;color:#fff;font:700 clamp(7px,.6vw,9px)/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;text-shadow:0 0 10px #fff9;overflow:hidden}
+    .miniwall .lit:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,#0000 0 32%,#00000066 38%) 0 0/3px 3px;opacity:.7}
+    .miniwall .lit span{position:relative}
+    .miniwall .dim{background:#221c36;display:grid;place-items:center;color:#ffffff40;font:700 clamp(6px,.5vw,8px)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+    .miniwall.full{grid-template-columns:1fr}
+    .miniwall.half{grid-template-columns:1fr 1fr;gap:2px}
+    .miniwall.group{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:2px;padding:2px}
+    .miniwall.group .dim{font-size:0}
+    .miniwall.group .dim:after{content:"";width:40%;height:34%;border-radius:2px;background:#ffffff14}
+    .c-led b{display:block;font:600 18px/1.1 var(--serif);color:var(--ink)}
+    .c-led small{display:block;margin-top:3px;font-size:11.5px;color:var(--muted)}
+    .c-row .v{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;color:var(--ink);font-weight:500}
+    .c-row .v b{font:700 20px/1 var(--sans);font-variant-numeric:tabular-nums}
+    .c-row i{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-style:normal;font-weight:700}
+    .c-row.yes i{color:#fff;background:var(--gold)}
+    .c-row.no i{color:#a09aae;background:#1b18260d}
+    .c-row.no .v{color:#a09aae}
+    .c-row.no .v s{text-decoration:none}
+    .c-row .lbl{display:none}
+    .c-cta{padding:18px 20px 22px}
+    .c-cta .btn{width:100%;justify-content:center}
     .tier-note{margin:28px auto 0;max-width:62ch;text-align:center;color:var(--muted);font-size:15px}
     .tier-note a{color:var(--gold);font-weight:700;border-bottom:1px solid #b8892f66}
+    .cmp-key{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:22px;font-size:12.5px;color:var(--muted)}
+    .cmp-key span{display:inline-flex;align-items:center;gap:8px}
+    .cmp-key i{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:9px;font-style:normal;font-weight:700}
+    .cmp-key .yes i{background:var(--gold);color:#fff}.cmp-key .no i{background:#1b18260d;color:#a09aae}
 
     /* audience */
     .aud{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -285,7 +309,19 @@
       .split,.try-grid{grid-template-columns:1fr}
       .moments,.aud{grid-template-columns:1fr}
       .insights{grid-template-columns:1fr}
-      .tiers{grid-template-columns:1fr 1fr}
+      .cmp{grid-template-columns:1fr 1fr;grid-template-rows:none;gap:18px}
+      .cmp-labels{display:none}
+      .tier{grid-row:auto;display:flex;flex-direction:column}
+      .tier>*{justify-content:space-between;text-align:left}
+      .c-head{align-items:flex-start;padding:24px 22px 18px}
+      .c-led{flex-direction:column;align-items:stretch}
+      .c-led .miniwall{aspect-ratio:16/6}
+      .c-row{padding:13px 22px}
+      .c-row .lbl{display:block;font-size:14px;color:var(--muted);font-weight:500;flex:1;padding-right:14px}
+      .c-row.no .lbl{text-decoration:line-through;color:#b5b0be}
+      .c-row .v{flex:none}
+      .c-row .v .u{display:none}
+      .c-cta{margin-top:auto}
       .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:auto;gap:12px}
       .shot{grid-column:auto;grid-row:auto;aspect-ratio:4/3}
       .shot:first-child{grid-column:1/-1;aspect-ratio:16/9}
@@ -317,8 +353,7 @@
       .sec-no{font-size:32px}
       .stats{grid-template-columns:1fr}
       .stat{padding:24px}
-      .tiers{grid-template-columns:1fr}
-      .tier{padding:26px 22px}
+      .cmp{grid-template-columns:1fr}
       .videos{grid-template-columns:1fr;gap:12px}
       .shot figcaption{font-size:12.5px;left:14px;right:14px;bottom:12px}
       .hero{padding:52px 0 48px}
@@ -576,54 +611,62 @@
       <div class="wrap">
         <div class="sec-head reveal">
           <div class="sec-no">06</div>
-          <div><div class="eyebrow">Ways to partner</div><h2>Pick how <i>big</i> you want to be.</h2><p>Four ways in — from a shared spot alongside other friends of the academy all the way up to a full-screen takeover of the wall. Every tier gets you on the LED wall, on our social media, and on the MC's lips.</p></div>
+          <div><div class="eyebrow">Ways to partner</div><h2>Pick how <i>big</i> you want to be.</h2><p>Four ways in — from a shared spot alongside other friends of the academy all the way up to a full-screen takeover of the wall. Every tier puts you on the main stage LED wall — the difference is how much of it is yours.</p></div>
         </div>
-        <div class="tiers">
+        <div class="cmp">
+          <div class="cmp-labels" aria-hidden="true">
+            <div></div>
+            <div class="l-led">Main stage LED display</div>
+            <div>Naming rights — “Presented by”</div>
+            <div>Stall in the venue foyer</div>
+            <div>Social media posts &amp; tags</div>
+            <div>Stage mentions by the MC</div>
+            <div>VIP passes</div>
+            <div></div>
+          </div>
           <article class="tier reveal">
-            <div class="tier-head"><div class="eyebrow">In-kind partner</div><strong>₹5,000</strong></div>
-            <div class="led"><small>On the LED wall</small><b>Shared screen</b></div>
-            <ul>
-              <li><i>✓</i><span><b>2</b> dedicated social media posts &amp; tags</span></li>
-              <li><i>✓</i><span><b>2</b> stage mentions by the MC</span></li>
-              <li><i>✓</i><span><b>1</b> VIP pass</span></li>
-            </ul>
-            <a class="btn ghost" href="tel:+918530015665">Join in</a>
+            <div class="c-head"><div class="eyebrow">In-kind partner</div><strong>₹5,000</strong></div>
+            <div class="c-led"><div class="miniwall group"><div class="dim"></div><div class="lit"><span>You</span></div><div class="dim"></div><div class="dim"></div><div class="dim"></div><div class="dim"></div></div><div><b>Group display</b><small>Your logo alongside other partners</small></div></div>
+            <div class="c-row no" data-label="Naming rights — “Presented by”"><span class="lbl">Naming rights — “Presented by”</span><span class="v"><i>✗</i><span class="u">Not included</span></span></div>
+            <div class="c-row no" data-label="Stall in the venue foyer"><span class="lbl">Stall in the venue foyer</span><span class="v"><i>✗</i><span class="u">Not included</span></span></div>
+            <div class="c-row yes" data-label="Social media posts &amp; tags"><span class="lbl">Social media posts &amp; tags</span><span class="v"><b>2</b><span class="u">posts</span></span></div>
+            <div class="c-row yes" data-label="Stage mentions by the MC"><span class="lbl">Stage mentions by the MC</span><span class="v"><b>2</b><span class="u">mentions</span></span></div>
+            <div class="c-row yes" data-label="VIP passes"><span class="lbl">VIP passes</span><span class="v"><b>1</b><span class="u">pass</span></span></div>
+            <div class="c-cta"><a class="btn ghost" href="tel:+918530015665">Join in</a></div>
           </article>
           <article class="tier reveal" data-d="1">
-            <div class="tier-head"><div class="eyebrow">Silver partner</div><strong>₹10,000</strong></div>
-            <div class="led"><small>On the LED wall</small><b>Shared screen</b></div>
-            <ul>
-              <li><i>✓</i><span><b>4</b> dedicated social media posts &amp; tags</span></li>
-              <li><i>✓</i><span><b>4</b> stage mentions by the MC</span></li>
-              <li><i>✓</i><span><b>2</b> VIP passes</span></li>
-            </ul>
-            <a class="btn ghost" href="tel:+918530015665">Go silver</a>
+            <div class="c-head"><div class="eyebrow">Silver partner</div><strong>₹10,000</strong></div>
+            <div class="c-led"><div class="miniwall group"><div class="dim"></div><div class="lit"><span>You</span></div><div class="dim"></div><div class="dim"></div><div class="dim"></div><div class="dim"></div></div><div><b>Group display</b><small>Your logo alongside other partners</small></div></div>
+            <div class="c-row no" data-label="Naming rights — “Presented by”"><span class="lbl">Naming rights — “Presented by”</span><span class="v"><i>✗</i><span class="u">Not included</span></span></div>
+            <div class="c-row no" data-label="Stall in the venue foyer"><span class="lbl">Stall in the venue foyer</span><span class="v"><i>✗</i><span class="u">Not included</span></span></div>
+            <div class="c-row yes" data-label="Social media posts &amp; tags"><span class="lbl">Social media posts &amp; tags</span><span class="v"><b>4</b><span class="u">posts</span></span></div>
+            <div class="c-row yes" data-label="Stage mentions by the MC"><span class="lbl">Stage mentions by the MC</span><span class="v"><b>4</b><span class="u">mentions</span></span></div>
+            <div class="c-row yes" data-label="VIP passes"><span class="lbl">VIP passes</span><span class="v"><b>2</b><span class="u">passes</span></span></div>
+            <div class="c-cta"><a class="btn ghost" href="tel:+918530015665">Go silver</a></div>
           </article>
           <article class="tier reveal" data-d="2">
-            <div class="tier-head"><div class="eyebrow">Gold partner</div><strong>₹20,000</strong></div>
-            <div class="led"><small>On the LED wall</small><b>Half screen</b></div>
-            <ul>
-              <li><i>✓</i><span>Stall or booth in the venue foyer</span></li>
-              <li><i>✓</i><span><b>6</b> dedicated social media posts &amp; tags</span></li>
-              <li><i>✓</i><span><b>6</b> stage mentions by the MC</span></li>
-              <li><i>✓</i><span><b>3</b> VIP passes</span></li>
-            </ul>
-            <a class="btn ghost" href="tel:+918530015665">Go gold</a>
+            <div class="c-head"><div class="eyebrow">Gold partner</div><strong>₹20,000</strong></div>
+            <div class="c-led"><div class="miniwall half"><div class="lit"><span>Your brand</span></div><div class="dim">Seasons</div></div><div><b>Half screen</b><small>Half the wall is yours</small></div></div>
+            <div class="c-row no" data-label="Naming rights — “Presented by”"><span class="lbl">Naming rights — “Presented by”</span><span class="v"><i>✗</i><span class="u">Not included</span></span></div>
+            <div class="c-row yes" data-label="Stall in the venue foyer"><span class="lbl">Stall in the venue foyer</span><span class="v"><i>✓</i><span class="u">Included</span></span></div>
+            <div class="c-row yes" data-label="Social media posts &amp; tags"><span class="lbl">Social media posts &amp; tags</span><span class="v"><b>6</b><span class="u">posts</span></span></div>
+            <div class="c-row yes" data-label="Stage mentions by the MC"><span class="lbl">Stage mentions by the MC</span><span class="v"><b>6</b><span class="u">mentions</span></span></div>
+            <div class="c-row yes" data-label="VIP passes"><span class="lbl">VIP passes</span><span class="v"><b>3</b><span class="u">passes</span></span></div>
+            <div class="c-cta"><a class="btn ghost" href="tel:+918530015665">Go gold</a></div>
           </article>
           <article class="tier featured reveal" data-d="3">
             <span class="ribbon">Most visible</span>
-            <div class="tier-head"><div class="eyebrow">Title sponsor</div><strong>₹30,000<span>–</span>50,000</strong></div>
-            <div class="led"><small>On the LED wall</small><b>Full screen</b></div>
-            <ul>
-              <li><i>✓</i><span>Naming rights — <b>"Presented by"</b> your brand</span></li>
-              <li><i>✓</i><span>Stall or booth in the venue foyer</span></li>
-              <li><i>✓</i><span><b>8</b> dedicated social media posts &amp; tags</span></li>
-              <li><i>✓</i><span><b>8</b> stage mentions by the MC</span></li>
-              <li><i>✓</i><span><b>4</b> VIP passes</span></li>
-            </ul>
-            <a class="btn gold" href="tel:+918530015665">Claim the title</a>
+            <div class="c-head"><div class="eyebrow">Title sponsor</div><strong>₹30,000<span>–</span>50,000</strong></div>
+            <div class="c-led"><div class="miniwall full"><div class="lit"><span>Your brand</span></div></div><div><b>Full screen</b><small>The whole wall, just your brand</small></div></div>
+            <div class="c-row yes" data-label="Naming rights — “Presented by”"><span class="lbl">Naming rights — “Presented by”</span><span class="v"><i>✓</i><span class="u">Included</span></span></div>
+            <div class="c-row yes" data-label="Stall in the venue foyer"><span class="lbl">Stall in the venue foyer</span><span class="v"><i>✓</i><span class="u">Included</span></span></div>
+            <div class="c-row yes" data-label="Social media posts &amp; tags"><span class="lbl">Social media posts &amp; tags</span><span class="v"><b>8</b><span class="u">posts</span></span></div>
+            <div class="c-row yes" data-label="Stage mentions by the MC"><span class="lbl">Stage mentions by the MC</span><span class="v"><b>8</b><span class="u">mentions</span></span></div>
+            <div class="c-row yes" data-label="VIP passes"><span class="lbl">VIP passes</span><span class="v"><b>4</b><span class="u">passes</span></span></div>
+            <div class="c-cta"><a class="btn gold" href="tel:+918530015665">Claim the title</a></div>
           </article>
         </div>
+        <div class="cmp-key reveal" aria-hidden="true"><span class="yes"><i>✓</i>Included</span><span class="no"><i>✗</i>Not in this tier</span></div>
         <p class="tier-note reveal">Want to sample your product in the foyer, hand something to every guest, or do something we haven't thought of? Custom and in-kind arrangements are welcome — <a href="tel:+918530015665">talk to Joseph</a>.</p>
       </div>
     </section>
